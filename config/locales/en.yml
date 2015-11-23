@@ -21,3 +21,12 @@
 
 en:
   hello: "Hello world"
+  base_title: "Framgia Test"
+  layouts:
+    header:
+      home: "Home"
+      signup: "Sign up"
+      signin: "Sign in"
+  footer:
+    about: "About"
+    contact: "Contact"
