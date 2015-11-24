@@ -27,6 +27,16 @@ en:
       home: "Home"
       signup: "Sign up"
       signin: "Sign in"
-  footer:
-    about: "About"
-    contact: "Contact"
+      account: "Account"
+      profile: "Profile"
+      setting: "Settings"
+      logout: "Logout"
+    footer:
+      about: "About"
+      contact: "Contact"
+    buttons:
+      login: "Login"
+      edit: "Edit"
+      update: "Update"
+      deleteaccount: "Delete Account"
+      confirm: "Are you sure?"
