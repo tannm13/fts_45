@@ -1,0 +1,15 @@
+<div class="container" >
+  <div class="row" >
+    <h1><%= t "admin.subject.title" %></h1>
+    <p><%= link_to t("admin.subject.create"), new_admin_subject_path,
+      class: "btn btn-success" %></p>
+    <table class="table table-bordered" >
+      <tr>
+        <th><%= t "id" %></th>
+        <th><%= t "subjectname" %></th>
+      </tr>
+      <%= render @subjects %>
+    </table>
+  </div>
+</div>
+<%= paginate @subjects %>
