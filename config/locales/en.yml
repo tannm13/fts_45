@@ -73,6 +73,18 @@ en:
       create: "create a subject"
       edit: "Edit"
       destroy: "Delete"
+    question:
+      h2: "New Word!"
+      new: "Questions"
+      create: "New Questions"
+      addanswer: "Add Answer"
+      submit: "Submit"
+      seccess: "Successfully!"
+      fail: "Failed!"
+      edit: "Edit Questions"
+    answer:
+      create: "add answer"
+
   id: "Id"
   subjectname: "Subjects Name"
   confirm: "you sure?"

@@ -4,4 +4,8 @@ class Question < ActiveRecord::Base
   has_many :answers
   has_many :exams, through: :results
   has_many :results
+
+  accepts_nested_attributes_for :answers,
+    reject_if: ->attributes{attributes["content"].blank?},
+    allow_destroy: true
 end

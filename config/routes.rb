@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   namespace :admin do
     root "subjects#index"
     resources :subjects
+    resources :questions
   end
 end
