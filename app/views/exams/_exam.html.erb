@@ -1,0 +1,11 @@
+<tr>
+  <td class="text-center"><%= l exam.created_at, format: :time_format %></td>
+  <td class="text-center"><%= exam.subject.name %></td>
+  <td class="text-center"><%= exam.status %></td>
+  <td class="text-center"><%= exam.duration %></td>
+  <td class="text-center"><%= exam.question_number %></td>
+  <td class="text-center"><%= exam.spent_time %></td>
+  <td class="text-center"><%= exam.score %></td>
+  <td class="text-center"><%= link_to t("buttons.exam.start"), "#",
+    class: "btn btn-primary" %></td>
+</tr>
