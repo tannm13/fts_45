@@ -22,6 +22,9 @@
 en:
   hello: "Hello world"
   base_title: "Framgia Test"
+  time:
+    formats:
+      time_format: "%H:%M:%S %d-%m-%y"
   layouts:
     header:
       home: "Home"
@@ -41,6 +44,8 @@ en:
       delete_account: "Delete Account"
       confirm: "Are you sure?"
       create_exam: "Create exam"
+      exam:
+        start: "Start"
   shared:
     error: "The form contain"
   flashs:

@@ -7,7 +7,7 @@ class Ability
       can :manage, :all
     elsif user.normal?
       can :update, User, id: user.id
-      can :create, Exam
+      can [:create, :read], Exam
       can :read, Subject
     else
       cannot :manage, :all

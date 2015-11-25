@@ -1,4 +1,6 @@
 class Exam < ActiveRecord::Base
+  enum status: {start: 0, testing: 1, unchecked: 2, checked: 3}
+
   belongs_to :subject
   belongs_to :user
   has_many :questions, through: :results

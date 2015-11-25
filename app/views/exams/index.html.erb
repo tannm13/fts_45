@@ -17,3 +17,23 @@
     <% end %>
   </div>
 </div>
+<br/>
+<div class="row text-success">
+  <div class="col-md-9">
+    <table class="table">
+      <tr>
+        <th class="text-center col-md-2"><%= t "labels.exam.created_date" %></th>
+        <th class="text-center"><%= t "labels.exam.subject" %></th>
+        <th class="text-center"><%= t "labels.exam.status" %></th>
+        <th class="text-center"><%= t "labels.exam.duration" %></th>
+        <th class="text-center"><%= t "labels.exam.question_number" %></th>
+        <th class="text-center"><%= t "labels.exam.spent_time" %></th>
+        <th class="text-center"><%= t "labels.exam.score" %></th>
+        <th></th>
+      </tr>
+      <%= render @exams %>
+    </table>
+    <%= paginate @exams %>
+  </div>
+</div>
+
