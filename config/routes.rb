@@ -10,4 +10,8 @@ Rails.application.routes.draw do
     end
   end
   resources :exams
+  namespace :admin do
+    root "subjects#index"
+    resources :subjects
+  end
 end
