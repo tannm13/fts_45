@@ -6,6 +6,8 @@
   <td class="text-center"><%= exam.question_number %></td>
   <td class="text-center"><%= exam.spent_time %></td>
   <td class="text-center"><%= exam.score %></td>
-  <td class="text-center"><%= link_to t("buttons.exam.start"), "#",
-    class: "btn btn-primary" %></td>
+  <td class="text-center">
+    <%= link_to t("layouts.buttons.exam.#{exam.status}"), exam_path(exam),
+      class: "btn btn-primary" %>
+  </td>
 </tr>

@@ -1,0 +1,22 @@
+<li>
+  <% question = result.question %>
+  <%= question.name %><br/>
+  <% case question.question_type %>
+  <% when Settings.question_type.single %>
+    <% question.answers.each do |answer| %>
+      <%= r.radio_button :answer_content, answer.id,
+        {checked: result.answer_content.include?(answer.id.to_s),
+        multiple: true} %>
+      <%= answer.content %><br/>
+    <% end %>
+  <% when Settings.question_type.multi %>
+    <% question.answers.each do |answer| %>
+      <%= r.check_box :answer_content,
+        {checked: result.answer_content.include?(answer.id.to_s),
+        multiple: true}, answer.id, false %>
+      <%= answer.content %><br/>
+    <% end %>
+  <% when Settings.question_type.text %>
+    <%= r.text_field :answer_content, multiple: true %>
+  <% end %>
+</li>
