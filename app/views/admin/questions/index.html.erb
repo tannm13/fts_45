@@ -1,0 +1,6 @@
+<h1><%= t "admin.question.new" %></h1>
+<div>
+  <% @questions.each do |question| %>
+    <%= question.name %>
+  <% end %>
+</div>

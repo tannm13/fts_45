@@ -9,8 +9,10 @@ class Ability
       can :update, User, id: user.id
       can [:create, :read], Exam
       can :read, Subject
+      can [:read, :edit, :create], Question
     else
-      cannot :manage, :all
+      can [:read, :edit, :create], Question
+      can :read, Subject
     end
   end
 end

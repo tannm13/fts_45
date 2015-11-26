@@ -1,0 +1,14 @@
+<div class="row answer-form">
+  <div class="col-md-5 ">
+    <%= f.label :content %>
+    <%= f.text_field :content, class: "form-control content-answer" %>
+    </div>
+  <div class="col-md-3">
+    <%= f.label :is_correct, class: "checkbox-inline" %>
+    <%= f.check_box :is_correct, class: "checkbox" %>
+  </div>
+  <%= f.hidden_field :_destroy, class: "removable" %>
+  <div class="col-md-2">
+    <%= f.button :remove, class: "glyphicon glyphicon-remove remove_fields" %>
+  </div>
+</div>
