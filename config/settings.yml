@@ -2,3 +2,5 @@ exam:
   duration: 30
   question_number: 5
 number_answers: 1
+questionStatusActive: active
+questionStatusinActive: inactive

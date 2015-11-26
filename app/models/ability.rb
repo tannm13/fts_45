@@ -8,11 +8,11 @@ class Ability
     elsif user.normal?
       can :update, User, id: user.id
       can [:create, :read], Exam
-      can :read, Subject
-      can [:read, :edit, :create], Question
+      can :index, Subject
+      can [:create, :index, :edit, :update], Question
     else
-      can [:read, :edit, :create], Question
-      can :read, Subject
+      can [:index, :edit, :create], Question
+      can :index, Subject
     end
   end
 end
