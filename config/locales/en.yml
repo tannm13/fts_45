@@ -46,11 +46,18 @@ en:
       create_exam: "Create exam"
       exam:
         start: "Start"
+        testing: "Continue"
+        checked: "View"
+        unchecked: "View"
+        finish: "Finish"
+        save: "Save"
   shared:
     error: "The form contain"
   flashs:
     created: "Created successfully!"
     error_created: "Created error!"
+    finished: "Finished successfully!"
+    error_finished: "Finished error!"
   labels:
     exam:
       subject: "Subject"
@@ -60,6 +67,7 @@ en:
       question_number: "Questions Number"
       spent_time: "Spent Time"
       score: "Score"
+      time_over: "Time over!"
   footer:
     about: "About"
     contact: "Contact"

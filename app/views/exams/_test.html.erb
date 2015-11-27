@@ -1,0 +1,18 @@
+<% if @time_remaining > 0 %>
+  <h3 class="pull-right text-danger" id="clock">
+    <span id="hidden-data" data-time-over-msg="<%= t "labels.exam.time_over" %>"
+      data-time-remaining="<%= @time_remaining %>">
+    </span>
+    <span class="glyphicon glyphicon-time">&nbsp</span>
+    <b id="time-remaining"></b>
+  </h3>
+<% end %>
+
+<div class="row">
+  <%= form_for @exam do |f| %>
+    <%= f.fields_for :results do |r| %>
+      <%= render r.object, r: r %>
+    <% end %>
+    <%= f.submit t("layouts.buttons.exam.finish"), class: "btn btn-success" %>
+  <% end %>
+</div>

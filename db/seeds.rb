@@ -22,7 +22,7 @@ end
 Subject.all.each do |subject|
   10.times do
     name = Faker::Lorem.sentences(1)
-    User.find(1).questions.create!(name: name, subject_id: subject.id)
+    User.find(1).questions.create!(name: name, subject_id: subject.id, status: 1)
   end
 end
 
