@@ -2,6 +2,7 @@ class Admin::QuestionsController < ApplicationController
   load_and_authorize_resource
 
   def index
+    @questions = @questions.inactive
   end
 
   def new
@@ -9,6 +10,10 @@ class Admin::QuestionsController < ApplicationController
     Settings.number_answers.times do
       @answer = @question.answers.build
     end
+  end
+
+  def edit
+    @subjects = Subject.all
   end
 
   def create
@@ -37,7 +42,7 @@ class Admin::QuestionsController < ApplicationController
 
   private
   def question_params
-    params.require(:question).permit :name, :subject_id,
+    params.require(:question).permit :name, :subject_id, :status,
       answers_attributes: [:id, :content, :is_correct, :_destroy]
   end
 end

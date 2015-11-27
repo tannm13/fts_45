@@ -74,7 +74,7 @@ en:
       edit: "Edit"
       destroy: "Delete"
     question:
-      h2: "New Word!"
+      h2: "New Questions"
       new: "Questions"
       create: "New Questions"
       addanswer: "Add Answer"
@@ -82,6 +82,7 @@ en:
       seccess: "Successfully!"
       fail: "Failed!"
       edit: "Edit Questions"
+      all: "All questions"
     answer:
       create: "add answer"
 
