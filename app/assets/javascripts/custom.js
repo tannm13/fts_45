@@ -13,10 +13,15 @@ $(function () {
     return false;
   });
   $(document).on("click", "#question_type", function(){
-    if($("#question_type option:selected").val()==0){
-      $("#answer_form").replaceWith("<%= j render 'admin/questions/answer_form' %>");
-    }else if($("#question_type option:selected").val()==1){
+    if($("#question_type option:selected").val()=="single"){
+      $(".answer").css("visibility","hidden");
+      $("#single").css("visibility","visible");
+      $("#addanswer").css("visibility","visible");
+    }else if($("#question_type option:selected").val()=="multiple"){
+      alert("multiple");
     }else{
+      $(".answer").css("visibility","hidden");
+      $("#text").css("visibility","visible");
     }
   });
 });
