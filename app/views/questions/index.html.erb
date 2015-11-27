@@ -1,0 +1,39 @@
+<% provide :title, t("admin.question.all") %>
+<div>
+  <div class="row">
+    <div class="col-md=8">
+      <%= link_to t("admin.question.create"), new_admin_question_path,
+        class: "btn btn-primary" %>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th><%= t "question" %></th>
+            <th><%= t "subject" %></th>
+            <th><%= t "type" %></th>
+            <th><%= t "status" %></th>
+            <th><%= t "correct answer" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @questions.each do |question| %>
+            <tr id="question-<%= question.id %>">
+              <td><%= question.name %></td>
+              <td><%= question.subject.name %></td>
+              <td><%= question.question_type %></td>
+              <td><%= question.status %></td>
+              <td>
+                <% question.answers.each do |answer| %>
+                  <%= answer.content if answer.is_correct %>
+                <% end %>
+              </td>
+              </td>
+              <td>
+                <%= link_to t("edit"), edit_question_path(question) if question.user_id == current_user.id %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
