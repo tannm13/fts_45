@@ -1,0 +1,32 @@
+<% provide :title, t("admin.question.all") %>
+<div>
+  <div class="row">
+    <div class="col-md=8">
+      <%= link_to t("admin.question.create"), new_admin_question_path,
+        class: "btn btn-primary" %>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th><%= t "name" %></th>
+            <th><%= t "email" %></th>
+            <th><%= t "role" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr id="user-<%= user.id %>">
+              <td><%= user.name %></td>
+              <td><%= user.email %></td>
+              <td><%= user.role %></td>
+              <td>
+                <%= link_to t("edit"),
+                  edit_admin_user_path(user) %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

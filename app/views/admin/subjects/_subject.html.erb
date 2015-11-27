@@ -4,6 +4,8 @@
   <td class="col-md-4" data-no-turbolink='true' >
     <%= link_to t("admin.subject.edit"), edit_admin_subject_path(subject.id),
       class: "btn btn-primary col-md-3 col-md-offset-2" %>
+  </td>
+  <td>
     <%= link_to t("admin.subject.destroy"), admin_subject_path(subject.id),
       method: :delete, data: {confirm: t("confirm")},
       class: "btn btn-primary col-md-3 col-md-offset-3" %>

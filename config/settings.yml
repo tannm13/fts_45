@@ -13,3 +13,5 @@ question_type:
 exam_status:
   checked: "checked"
   unchecked: "unchecked"
+single: "_single"
+multiple: "_multiple"
