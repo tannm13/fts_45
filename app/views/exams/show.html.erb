@@ -1,1 +1,2 @@
-<%= render "test" if @exam.testing? %>
+<%= (@exam.unchecked? || @exam.checked?) ?
+  render("#{@exam.status}") : render("test") %>

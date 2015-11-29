@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151126085403) do
+ActiveRecord::Schema.define(version: 20151127130908) do
 
   create_table "answers", force: :cascade do |t|
     t.string   "content"
@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(version: 20151126085403) do
     t.integer  "duration"
     t.integer  "question_number"
     t.integer  "score"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.float    "spent_time"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "spent_time",      default: 0
   end
 
   add_index "exams", ["subject_id"], name: "index_exams_on_subject_id"

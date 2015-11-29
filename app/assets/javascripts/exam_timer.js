@@ -4,6 +4,8 @@ function time_remaining(total_seconds){
   if (total_seconds <= 0) {
     $("#time_remaining").text(time_over_msg);
     if(total_seconds == 0){
+      var finish_commit = $("<input>", { type: "hidden", name: "commit", value: "Finish" });
+      $("form").append($(finish_commit));
       $("form").submit();
     }
     $("[type='submit']").remove();

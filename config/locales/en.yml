@@ -24,7 +24,8 @@ en:
   base_title: "Framgia Test"
   time:
     formats:
-      time_format: "%H:%M:%S %d-%m-%y"
+      date_format: "%H:%M:%S %d-%m-%y"
+      time_format: "%M:%S"
   layouts:
     header:
       home: "Home"
@@ -47,6 +48,7 @@ en:
       exam:
         start: "Start"
         testing: "Continue"
+        saved: "Continue"
         checked: "View"
         unchecked: "View"
         finish: "Finish"
@@ -68,6 +70,8 @@ en:
       spent_time: "Spent Time"
       score: "Score"
       time_over: "Time over!"
+    question:
+      is_true: "Is true"
   footer:
     about: "About"
     contact: "Contact"
