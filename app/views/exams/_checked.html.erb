@@ -1,0 +1,38 @@
+<div class="row">
+  <ul>
+    <% @results.each do |result| %>
+      <li>
+        <% question = result.question %>
+        <%= question.name %><br/>
+        <% case question.question_type %>
+        <% when Settings.question_type.single %>
+          <% question.answers.each do |answer| %>
+            <%= radio_button_tag "question#{question.id}", answer.id,
+              result.answer_content.include?(answer.id.to_s),
+              {disabled: true} %>
+            <span class="answer-<%= answer.is_correct %>">
+              <%= answer.content %>
+            </span><br/>
+          <% end %>
+        <% when Settings.question_type.multi %>
+          <% question.answers.each do |answer| %>
+            <%= check_box_tag "question#{question.id}", answer.id,
+              result.answer_content.include?(answer.id.to_s),
+              {disabled: true} %>
+            <span class="answer-<%= answer.is_correct %>">
+              <%= answer.content %>
+            </span><br/>
+          <% end %>
+        <% when Settings.question_type.text %>
+          <%= text_field_tag "question#{question.id}", result.answer_content[0],
+            disabled: true %>
+          <span class="answer-true"><%= question.answers[0].content %></span>
+        <% end %>
+        <br/>
+        <%= check_box_tag "question#{question.id}", "",
+          result.is_correct, {disabled: true} %>
+        <%= t "labels.question.is_true" %>
+      </li>
+    <% end %>
+  </ul>
+</div>

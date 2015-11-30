@@ -4,14 +4,13 @@ class ExamsController < ApplicationController
   def index
     @exam = Exam.new
     @subjects = Subject.all
-    @exams = @exams.paginate page: params[:page]
+    @exams = @exams.recent.paginate page: params[:page]
   end
 
   def show
     @results = @exam.results
-    @exam.update_status :testing if @exam.start?
+    @exam.update_status :testing if @exam.start? || @exam.saved?
     @time_remaining = @exam.time_remaining
-    @is_time_over = @time_remaining < Settings.exam.time_out
   end
 
   def create
@@ -24,8 +23,10 @@ class ExamsController < ApplicationController
   end
 
   def update
+    @exam.status = params[:commit] == "Finish" ? :unchecked : :saved
+    @exam.spent_time = @exam.time_spent
     if @exam.update_attributes exam_params
-      flash[:success] = t "flashs.finished"
+      flash.now[:success] = t "flashs.finished"
       redirect_to authenticated_root_path
     else
       flash.now[:danger] = t "flashs.error_finished"
@@ -36,7 +37,7 @@ class ExamsController < ApplicationController
   private
   def exam_params
     params.require(:exam).permit(:subject_id, :user_id, :status, :duration,
-      :question_number,
+      :question_number, :time_spent,
       results_attributes: [:id, :exam_id, :question_id, answer_content: []])
   end
 end

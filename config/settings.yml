@@ -10,3 +10,6 @@ question_type:
   single: "single"
   multi: "multi"
   text: "text"
+exam_status:
+  checked: "checked"
+  unchecked: "unchecked"

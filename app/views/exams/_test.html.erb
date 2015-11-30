@@ -13,6 +13,7 @@
     <%= f.fields_for :results do |r| %>
       <%= render r.object, r: r %>
     <% end %>
+    <%= f.submit t("layouts.buttons.exam.save"), class: "btn btn-warning" %>
     <%= f.submit t("layouts.buttons.exam.finish"), class: "btn btn-success" %>
   <% end %>
 </div>
