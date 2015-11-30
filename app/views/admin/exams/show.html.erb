@@ -1,0 +1,8 @@
+<div class="row">
+  <%= form_for [:admin, @exam] do |f| %>
+    <%= f.fields_for :results do |r| %>
+      <%= render r.object, r: r %>
+    <% end %>
+    <%= f.submit t("layouts.buttons.exam.check"), class: "btn btn-success" %>
+  <% end %>
+</div>

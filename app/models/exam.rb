@@ -12,6 +12,7 @@ class Exam < ActiveRecord::Base
   accepts_nested_attributes_for :results
 
   before_create :init_exam
+  after_update :set_score
 
   def time_remaining
     Settings.exam.duration * Settings.seconds - self.spent_time
@@ -21,9 +22,17 @@ class Exam < ActiveRecord::Base
     self.spent_time + (Time.zone.now - self.updated_at).to_i
   end
 
+  def calculated_score
+    self.results.correct.count
+  end
+
   private
   def init_exam
     self.questions = self.subject.questions.active
       .order("RANDOM()").limit Settings.exam.question_number
+  end
+
+  def set_score
+    self.update_column(:score, self.calculated_score) if self.checked?
   end
 end

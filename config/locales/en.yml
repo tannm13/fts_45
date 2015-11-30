@@ -55,6 +55,8 @@ en:
         unchecked: "View"
         finish: "Finish"
         save: "Save"
+        view: "View"
+        check: "Check"
   shared:
     error: "The form contain"
   flashs:
