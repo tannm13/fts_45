@@ -1,0 +1,37 @@
+<li>
+  <% question = result.question %>
+  <%= question.name %><br/>
+  <% case question.question_type %>
+  <% when Settings.question_type.single %>
+    <% question.answers.each do |answer| %>
+      <%= radio_button_tag "question#{question.id}", answer.id,
+        result.answer_content.include?(answer.id.to_s),
+        {disabled: true} %>
+      <span class="answer-<%= answer.is_correct %>">
+        <%= answer.content %>
+      </span><br/>
+    <% end %>
+    <%= r.check_box :is_correct, {checked:
+      result.answer_content.include?(question.answers.correct[0].id.to_s)} %>
+    <%= t "labels.question.is_true" %>
+  <% when Settings.question_type.multi %>
+    <% question.answers.each do |answer| %>
+      <%= check_box_tag "question#{question.id}", answer.id,
+        result.answer_content.include?(answer.id.to_s),
+        {disabled: true} %>
+      <span class="answer-<%= answer.is_correct %>">
+        <%= answer.content %>
+      </span><br/>
+    <% end %>
+    <%= r.check_box :is_correct, {checked: result.answer_content -
+      question.answers.correct.ids.map{|id| id.to_s}} %>
+    <%= t "labels.question.is_true" %>
+  <% when Settings.question_type.text %>
+    <%= text_field_tag "question#{question.id}", result.answer_content[0],
+      disabled: true %>
+    <span class="answer-true"><%= question.answers[0].content %></span><br/>
+    <%= r.check_box :is_correct, {checked: result.answer_content[0] ==
+      question.answers[0].content} %>
+    <%= t "labels.question.is_true" %>
+  <% end %>
+</li>

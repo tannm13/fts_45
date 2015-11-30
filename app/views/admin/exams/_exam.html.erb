@@ -1,0 +1,14 @@
+<tr>
+  <td class="text-center"><%= l exam.created_at, format: :date_format %></td>
+  <td class="text-center"><%= exam.subject.name %></td>
+  <td class="text-center"><%= exam.status %></td>
+  <td class="text-center"><%= exam.duration %></td>
+  <td class="text-center"><%= exam.question_number %></td>
+  <td class="text-center"><%= exam.spent_time / Settings.seconds %>:
+    <%= exam.spent_time % Settings.seconds %></td>
+  <td class="text-center"><%= exam.score %></td>
+  <td class="text-center">
+    <%= link_to t("layouts.buttons.exam.view"), admin_exam_path(exam),
+      class: "btn btn-primary" %>
+  </td>
+</tr>
