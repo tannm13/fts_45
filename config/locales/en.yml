@@ -30,11 +30,13 @@ en:
     header:
       home: "Home"
       signup: "Sign up"
+      create: "Create"
       signin: "Sign in"
       account: "Account"
       profile: "Profile"
       setting: "Settings"
       logout: "Logout"
+      update: "Update"
     footer:
       about: "About"
       contact: "Contact"

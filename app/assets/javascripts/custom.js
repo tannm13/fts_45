@@ -4,6 +4,7 @@ $(function () {
     $(this).parent().parent().hide();
     return false;
   });
+
   $(document).on("click", ".add_child", function() {
     var association = $(this).attr("data-association");
     var regexp = new RegExp("new_" + association, "g");
@@ -12,16 +13,16 @@ $(function () {
       .replace(regexp, new_id));
     return false;
   });
-  $(document).on("click", "#question_type", function(){
-    if($("#question_type option:selected").val()=="single"){
-      $(".answer").css("visibility","hidden");
-      $("#single").css("visibility","visible");
-      $("#addanswer").css("visibility","visible");
-    }else if($("#question_type option:selected").val()=="multiple"){
-      alert("multiple");
-    }else{
-      $(".answer").css("visibility","hidden");
-      $("#text").css("visibility","visible");
+
+  $(document).on("click", ".checkbox", function(){
+    checkbox = this;
+    if (checkbox.checked){
+      $("input.checkbox").each(function(){
+        if (checkbox != this) {
+          $(this).prop("checked", false);
+        }
+      });
     }
   });
+
 });

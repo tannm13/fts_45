@@ -1,7 +1,6 @@
 <%= form_for [:admin, @question] do |f| %>
 
-  <%= render "shared/error_messages", object: f.object %>
-  <%= f.hidden_field :status, value: "active" %>
+  <%= f.hidden_field :status, value: "inactive" %>
   <%= f.label :name %>
   <%= f.text_field :name, class: "form-control" %>
 
@@ -11,30 +10,61 @@
     <%= f.select :subject_id, options_for_select(@subjects.map{|c| [c.name, c.id]},
       selected_key = f.object.subject_id), {}, class: "form-control" %>
   </div>
+  <div >
+    <ul class="tabs" data-persist="true">
+      <li>
+        <a href="#view1">
+          <%= t "single" %>
+          <%= f.hidden_field :question_type, value: "single" %>
+        </a>
+      </li>
+      <li>
+        <a href="#view2">
+          <%= t "multiple" %>
+          <%= f.hidden_field :question_type, value: "multiple" %>
+        </a>
+      </li>
+      <li>
+        <a href="#view3">
+          <%= t "text" %>
+          <%= f.hidden_field :question_type, value: "text" %>
+        </a>
+      </li>
+    </ul>
+    <div class="tabcontents">
+      <div id="view1">
+        <div id="answers_single" >
+          <%= f.fields_for :answers do |answer_form| %>
+            <%= render "answer_single", f: answer_form  %>
+          <% end %>
+        </div>
+        <div>
+          <%= add_child_button t("admin.question.addanswer"), :answers, "#answers_single" %>
+          <%= new_fields_template f, :answers, Settings.single %>
+        </div>
+      </div>
 
-  <div class="form-group" >
-    <%= f.select :question_type,
-      options_for_select({single: :single, multiple: :multiple, text: :text}), {} ,
-      class: "form-control" %>
-  </div>
-  <div id="answers_multiple" >
-    <%= f.fields_for :answers do |answer_form| %>
-      <%= render "shared/error_messages", object: answer_form.object %>
-      <%= render "answer_form", f: answer_form  %>
-    <% end %>
-  </div>
+      <div id="view2">
+        <div id="answers_multiple" >
+          <%= f.fields_for :answers do |answer_form| %>
+            <%= render "answer_multiple", f: answer_form  %>
+          <% end %>
+        </div>
+        <div>
+          <%= add_child_button t("admin.question.addanswer"), :answers, "#answers_multiple" %>
+          <%= new_fields_template f, :answers, Settings.multiple %>
+        </div>
+      </div>
 
-  <div id="addanswer" class="add-answer answer" name="answer" >
-    <%= add_child_button t("admin.question.addanswer"), :answers, "#answers_multiple" %>
-    <%= new_fields_template f, :answers %>
+      <div id="view3">
+        <div id="answers_text" >
+          <%= f.fields_for :answers do |answer_text| %>
+            <%= render "shared/error_messages", object: answer_text.object %>
+            <%= render "answer_text", f: answer_text  %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-  <div id="answers_text" >
-    <%= f.fields_for :answers do |answer_text| %>
-      <%= render "shared/error_messages", object: answer_text.object %>
-      <%= render "answer_text", f: answer_text  %>
-    <% end %>
-  </div>
-
-
   <%= f.submit t("admin.question.submit"), class: "btn btn-primary" %>
 <% end %>

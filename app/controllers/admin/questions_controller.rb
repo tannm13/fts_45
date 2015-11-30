@@ -16,6 +16,16 @@ class Admin::QuestionsController < ApplicationController
     @subjects = Subject.all
   end
 
+  def update
+    if @question.update_attributes question_params
+      flash[:success] = t "admin.question.seccess"
+      redirect_to admin_questions_path
+    else
+      flash[:seccess] = t "admin.question.fail"
+      render :edit
+    end
+  end
+
   def create
     @question = current_user.questions.new question_params
     if @question.save
@@ -24,16 +34,6 @@ class Admin::QuestionsController < ApplicationController
     else
       flash[:warm] = t "admin.question.fail"
       redirect_to :back
-    end
-  end
-
-  def update
-    if @question.update_attributes question_params
-      flash[:success] = t "admin.question.seccess"
-      redirect_to admin_questions_path
-    else
-      flash[:seccess] = t "admin.question.fail"
-      rend :edit
     end
   end
 
