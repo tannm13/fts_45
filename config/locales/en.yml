@@ -101,6 +101,8 @@ en:
       all: "All questions"
     answer:
       create: "add answer"
+  mail:
+    exam_result: "Exam Result"
 
   id: "Id"
   subjectname: "Subjects Name"

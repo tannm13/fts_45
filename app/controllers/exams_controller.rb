@@ -4,7 +4,7 @@ class ExamsController < ApplicationController
   def index
     @exam = Exam.new
     @subjects = Subject.all
-    @exams = @exams.recent.paginate page: params[:page]
+    @exams = current_user.exams.recent.paginate page: params[:page]
   end
 
   def show

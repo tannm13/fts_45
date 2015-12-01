@@ -6,7 +6,7 @@ class Result < ActiveRecord::Base
 
   scope :correct, -> {where is_correct: true}
 
-  before_update :clean_answer_content
+  before_update :clean_answer_content, if: :answer_content_changed?
 
   private
   def clean_answer_content
