@@ -11,6 +11,7 @@ gem "jbuilder", "~> 2.0"
 gem "sdoc", "~> 0.4.0", group: :doc
 gem "devise"
 gem "cancancan", "~>1.10"
+gem "whenever", require: false
 gem "bootstrap-sass", "3.2.0.0"
 gem "faker"
 gem "config"

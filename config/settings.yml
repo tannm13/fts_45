@@ -15,3 +15,5 @@ exam_status:
   unchecked: "unchecked"
 single: "_single"
 multiple: "_multiple"
+day: 1
+reminder: "Reminder exam"
