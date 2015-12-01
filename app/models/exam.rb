@@ -7,6 +7,7 @@ class Exam < ActiveRecord::Base
   has_many :questions, through: :results
   has_many :results
 
+  scope :fake, ->{where "created_at <= ?", Settings.day.day.ago}
   scope :recent, -> {order created_at: :desc}
 
   accepts_nested_attributes_for :results
