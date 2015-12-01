@@ -13,7 +13,8 @@ class Exam < ActiveRecord::Base
   accepts_nested_attributes_for :results
 
   before_create :init_exam
-  after_update :set_score
+  after_update :set_score, if: :checked?
+  after_update :send_exam_result, if: :unchecked?
 
   def time_remaining
     Settings.exam.duration * Settings.seconds - self.spent_time
@@ -27,6 +28,21 @@ class Exam < ActiveRecord::Base
     self.results.correct.count
   end
 
+  def auto_check
+    self.results.each do |result|
+      question = result.question
+      if question.text?
+        result.update_attributes is_correct: true if
+          question.answers[0].content == result.answer_content[0]
+      else
+        result.update_attributes is_correct: true if
+          (result.question.answers.correct.ids.map{|id| id.to_s} -
+          result.answer_content).empty?
+      end
+    end
+    self.update_status :checked
+  end
+
   private
   def init_exam
     self.questions = self.subject.questions.active
@@ -34,6 +50,10 @@ class Exam < ActiveRecord::Base
   end
 
   def set_score
-    self.update_column(:score, self.calculated_score) if self.checked?
+    self.update_column :score, self.calculated_score
+  end
+
+  def send_exam_result
+    SendExamResult.perform_async self.id
   end
 end
