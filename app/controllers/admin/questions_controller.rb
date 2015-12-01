@@ -1,5 +1,5 @@
-class Admin::QuestionsController < ApplicationController
-  load_and_authorize_resource
+class Admin::QuestionsController < Admin::BaseController
+  load_resource
 
   def index
     @questions = @questions.inactive
