@@ -1,5 +1,5 @@
-class Admin::UsersController < ApplicationController
-  load_and_authorize_resource
+class Admin::UsersController < Admin::BaseController
+  load_resource
 
   def index
   end

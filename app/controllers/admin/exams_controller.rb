@@ -1,5 +1,5 @@
-class Admin::ExamsController < ApplicationController
-  load_and_authorize_resource
+class Admin::ExamsController < Admin::BaseController
+  load_resource
 
   def index
     @exams = @exams.unchecked.recent.paginate page: params[:page]
