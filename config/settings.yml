@@ -8,7 +8,7 @@ questionStatusinActive: inactive
 seconds: 60
 question_type:
   single: "single"
-  multi: "multi"
+  multiple: "multiple"
   text: "text"
 exam_status:
   checked: "checked"
