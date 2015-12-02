@@ -74,6 +74,8 @@ en:
       spent_time: "Spent Time"
       score: "Score"
       time_over: "Time over!"
+      user: "User"
+      search: "Search"
     question:
       is_true: "Is true"
   footer:

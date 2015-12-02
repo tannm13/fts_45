@@ -1,5 +1,6 @@
 <tr>
   <td class="text-center"><%= l exam.created_at, format: :date_format %></td>
+  <td class="text-center"><%= exam.user.name %></td>
   <td class="text-center"><%= exam.subject.name %></td>
   <td class="text-center"><%= exam.status %></td>
   <td class="text-center"><%= exam.duration %></td>

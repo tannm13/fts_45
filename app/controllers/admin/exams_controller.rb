@@ -2,7 +2,9 @@ class Admin::ExamsController < Admin::BaseController
   load_resource
 
   def index
-    @exams = @exams.unchecked.recent.paginate page: params[:page]
+    @search = @exams.ransack params[:q]
+    @search.sorts = Settings.exam.sort_by_date if @search.sorts.empty?
+    @exams = @search.result.paginate page: params[:page]
   end
 
   def show
