@@ -20,6 +20,11 @@ $(function () {
       disable_btn_add(false)
     }else if(question_type == "text"){
       disable_btn_add(true)
+      $(".single_answer:first", function(){
+        $(this).find(".remove_fields").hide();
+        $(this).find(".checkbox").hide();
+        $(this).find(".checkbox-inline").hide();
+      });
       $(".single_answer:not(:first)").each(function(){
         $(this).find(".removable").val(1);
         $(this).find(".content_answer").val("");
