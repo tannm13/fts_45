@@ -1,6 +1,9 @@
 Devise.setup do |config|
   config.mailer_sender = ""
   require "devise/orm/active_record"
+  config.omniauth :facebook,
+    ENV["facebook_app_id"],
+    ENV["facebook_app_secret"]
   config.case_insensitive_keys = [:email]
   config.strip_whitespace_keys = [:email]
   config.skip_session_storage = [:http_auth]
