@@ -1,5 +1,5 @@
 class Question < ActiveRecord::Base
-  enum question_type: {single: 0, multi: 1, text: 2}
+  enum question_type: {single: 0, multiple: 1, text: 2}
   enum status: {inactive: 0, active: 1}
 
   belongs_to :user
