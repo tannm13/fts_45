@@ -1,18 +1,39 @@
-<div class="row text-success">
-  <div class="col-md-9">
-    <table class="table">
-      <tr>
-        <th class="text-center col-md-2"><%= t "labels.exam.created_date" %></th>
-        <th class="text-center"><%= t "labels.exam.subject" %></th>
-        <th class="text-center"><%= t "labels.exam.status" %></th>
-        <th class="text-center"><%= t "labels.exam.duration" %></th>
-        <th class="text-center"><%= t "labels.exam.question_number" %></th>
-        <th class="text-center"><%= t "labels.exam.spent_time" %></th>
-        <th class="text-center"><%= t "labels.exam.score" %></th>
-        <th></th>
-      </tr>
-      <%= render @exams %>
-    </table>
-    <%= paginate @exams %>
+<%= search_form_for [:admin, @search] do |f| %>
+  <div class="row text-success">
+    <div class="col-md-9">
+      <table class="table">
+        <tr>
+          <th class="text-center col-md-2">
+            <%= sort_link @search, :created_at, t("labels.exam.created_date") %>
+          </th>
+          <th class="text-center">
+            <%= sort_link @search, :user_name, t("labels.exam.user") %>
+          </th>
+          <th class="text-center">
+            <%= sort_link @search, :subject_name, t("labels.exam.subject") %>
+          </th>
+          <th class="text-center">
+            <%= sort_link @search, :status, t("labels.exam.status") %>
+          </th>
+          <th class="text-center"><%= t "labels.exam.duration" %></th>
+          <th class="text-center"><%= t "labels.exam.question_number" %></th>
+          <th class="text-center"><%= t "labels.exam.spent_time" %></th>
+          <th class="text-center">
+            <%= sort_link @search, :score, t("labels.exam.score") %>
+          </th>
+          <th></th>
+        </tr>
+        <tr>
+          <th></th>
+          <th><%= f.text_field :user_name_cont %></th>
+          <th><%= f.text_field :subject_name_cont %></th>
+          <th colspan="6" class="pull-right">
+            <%= f.submit t("labels.exam.search") %>
+          </th>
+        </tr>
+        <%= render @exams %>
+      </table>
+      <%= paginate @exams %>
+    </div>
   </div>
-</div>
+<% end %>
