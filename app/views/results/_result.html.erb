@@ -9,7 +9,7 @@
         multiple: true} %>
       <%= answer.content %><br/>
     <% end %>
-  <% when Settings.question_type.multi %>
+  <% when Settings.question_type.multiple %>
     <% question.answers.each do |answer| %>
       <%= r.check_box :answer_content,
         {checked: result.answer_content.include?(answer.id.to_s),
