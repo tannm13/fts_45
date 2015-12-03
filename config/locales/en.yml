@@ -112,4 +112,7 @@ en:
   update: "Update successfully! "
   deletefail: "Delete fail"
   deletesuccess: "delete successfully!"
-
+  confirm: "Please confirm your email address. No spam."
+  addemail: "Add Email"
+  profileupdate: "Your profile was successfully updated."
+  placeholder: "Example: email@me.com"

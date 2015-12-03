@@ -19,6 +19,9 @@ gem "kaminari"
 gem "bootstrap-will_paginate", "0.0.10"
 gem "sidekiq"
 gem "ransack"
+gem "omniauth"
+gem "omniauth-facebook"
+gem "figaro"
 
 group :development, :test do
   gem "byebug"
