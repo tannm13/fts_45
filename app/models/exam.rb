@@ -1,6 +1,9 @@
 class Exam < ActiveRecord::Base
   include StateAble
+  include PublicActivity::Model
   enum status: {start: 0, testing: 1, saved: 2, unchecked: 3, checked: 4}
+  tracked except: :update,
+    owner: ->(controller, model) {controller && controller.current_user}
 
   belongs_to :subject
   belongs_to :user

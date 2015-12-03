@@ -3,6 +3,7 @@ exam:
   question_number: 5
   time_out: 0
   sort_by_date: "created_at desc"
+  per_page: 10
 number_answers: 1
 questionStatusActive: active
 questionStatusinActive: inactive

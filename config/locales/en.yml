@@ -105,6 +105,9 @@ en:
       create: "add answer"
   mail:
     exam_result: "Exam Result"
+  activity:
+    deleted: "[deleted]"
+    create: " create test "
 
   id: "Id"
   subjectname: "Subjects Name"

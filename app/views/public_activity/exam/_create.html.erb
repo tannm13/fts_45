@@ -1,0 +1,14 @@
+<li class="list-group-item">
+  <span class="glyphicon glyphicon-plus"></span>
+  <small class="text-muted">
+    <%= l a.created_at, format: :date_format %>
+  </small><br/>
+  <strong><%= activity.owner ? activity.owner.name : t("activity.deleted") %></strong>
+  <% if a.trackable %>
+    <%= t "activity.create" %>
+    <%= link_to a.trackable.subject.name, exam_path(a.trackable) %>.
+  <% else %>
+    <%= t "activity.create" %>
+    <%= t "activity.deleted" %>.
+  <% end %>
+</li>

@@ -25,6 +25,7 @@ gem "omniauth-twitter"
 gem "omniauth-linkedin"
 gem "omniauth-google-oauth2"
 gem "figaro"
+gem "public_activity"
 
 group :development, :test do
   gem "byebug"
