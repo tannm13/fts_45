@@ -21,6 +21,9 @@ gem "sidekiq"
 gem "ransack"
 gem "omniauth"
 gem "omniauth-facebook"
+gem "omniauth-twitter"
+gem "omniauth-linkedin"
+gem "omniauth-google-oauth2"
 gem "figaro"
 
 group :development, :test do

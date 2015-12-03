@@ -20,6 +20,5 @@ Rails.application.routes.draw do
   end
 
   match "/users/:id/finish_signup", to: "users#finish_signup",
-   via: [:get, :patch], as: :finish_signup
-
+    via: [:get, :patch], as: :finish_signup
 end
