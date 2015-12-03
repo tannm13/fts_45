@@ -11,7 +11,7 @@
         <%= answer.content %>
       </span><br/>
     <% end %>
-  <% when Settings.question_type.multi %>
+  <% when Settings.question_type.multiple %>
     <% question.answers.each do |answer| %>
       <%= check_box_tag "question#{question.id}", answer.id,
         result.answer_content.include?(answer.id.to_s),
