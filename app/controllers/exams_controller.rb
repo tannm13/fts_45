@@ -9,13 +9,16 @@ class ExamsController < ApplicationController
 
   def show
     @results = @exam.results
-    @exam.update_status :testing if @exam.start? || @exam.saved?
+    if @exam.start? || @exam.saved?
+      @exam.update_status :testing
+      @exam.create_activity :test
+    end
     @time_remaining = @exam.time_remaining
   end
 
   def create
     if @exam.save
-      flash[:success] = t "flashs.created"
+      flash.now[:success] = t "flashs.created"
     else
       flash.now[:danger] = t "flashs.error_created"
     end
