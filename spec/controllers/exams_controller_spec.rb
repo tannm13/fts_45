@@ -3,7 +3,10 @@ require "rails_helper"
 describe ExamsController do
   let(:exam) {create :exam}
   let(:user) {create :user}
-  before {sign_in user}
+  before do
+    sign_in user
+    allow(controller).to receive(:current_user).and_return user
+  end
 
   describe "GET index" do
     before {get :index}
@@ -19,6 +22,7 @@ describe ExamsController do
 
   describe "POST create" do
     before do
+      Exam.skip_callback :create, :before, :init_exam
       post :create, exam: attributes_for(:exam)
     end
 
@@ -35,7 +39,7 @@ describe ExamsController do
 
   describe "PATCH update" do
     before do
-      patch :update, exam: attributes_for(:exam)
+      patch :update, exam: attributes_for(:exam), id: exam
     end
 
     context "when exam saves successfully" do
