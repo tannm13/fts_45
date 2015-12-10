@@ -1,8 +1,8 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe User do
 
-  subject {FactoryGirl.build :user}
+  subject {build :user}
 
   it {is_expected.to respond_to :name}
   it {is_expected.to respond_to :email}
@@ -46,16 +46,8 @@ describe User do
     end
   end
 
-  describe "#questions" do
-    context "destroy" do
-      before do
-        5.times.each do
-          question = mock_model(Question).as_null_object
-          question.user = subject
-        end
-        subject.destroy
-      end
-      it {expect(subject.questions).to be_empty}
-    end
+  describe "association" do
+    it {is_expected.to have_many :exams}
+    it {is_expected.to have_many :questions}
   end
 end

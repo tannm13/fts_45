@@ -5,6 +5,7 @@ require "rspec/rails"
 require "capybara/rails"
 require "rspec/collection_matchers"
 require "devise"
+require "shoulda/matchers"
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
@@ -13,7 +14,8 @@ ActiveRecord::Migration.maintain_test_schema!
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
 
-  config.include Devise::TestHelpers
+  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::TestHelpers, type: :view
 
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -40,4 +42,11 @@ RSpec.configure do |config|
   end
 
   config.infer_spec_type_from_file_location!
+end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
 end
