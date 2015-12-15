@@ -1,20 +1,25 @@
 require "rails_helper"
 
 describe "questions/new.html.erb" do
-  subject {rendered}
-  let(:user) {build :user}
-  let(:question) {build :question}
-  let(:subject) {build :subject}
+  let(:user) {create :user}
+  let(:question) {create :question}
+  let(:subject) {create :subject}
 
   before do
     sign_in user
     assign :question, question
-    assign :subjects, subject
+    assign :subjects, [subject]
     render
   end
 
   it do
-    is_expected.to have_selector "form", method: "post", action: question_path do |form|
+    expect(controller.request.path_parameters[:controller]).to eq("questions")
+    expect(controller.request.path_parameters[:action]).to eq("new")
+    expect(controller.controller_path).to eq("questions")
+  end
+
+  it do
+    expect(rendered).to have_selector "form" do |form|
       form.is_expected.to have_selector "input", name: "status"
       form.is_expected.to have_selector "input", name: "name"
       form.is_expected.to have_selector "select", name: "subject_id"
