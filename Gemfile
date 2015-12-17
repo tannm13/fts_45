@@ -26,6 +26,7 @@ gem "omniauth-linkedin"
 gem "omniauth-google-oauth2"
 gem "figaro"
 gem "public_activity"
+gem "activerecord-import", ">= 0.4.0"
 
 group :development, :test do
   gem "byebug"
@@ -36,6 +37,7 @@ group :development, :test do
   gem "factory_girl_rails"
   gem "capybara"
   gem "database_cleaner"
+  gem "bullet"
 end
 
 group :development do

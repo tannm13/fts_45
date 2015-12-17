@@ -15,7 +15,7 @@ class Exam < ActiveRecord::Base
 
   accepts_nested_attributes_for :results
 
-  before_create :init_exam
+  after_create :init_exam
   after_update :set_score, if: :checked?
   after_update :send_exam_result, if: :unchecked?
 
@@ -32,7 +32,7 @@ class Exam < ActiveRecord::Base
   end
 
   def auto_check
-    self.results.each do |result|
+    self.results.includes(question: :answers) do |result|
       question = result.question
       if question.text?
         result.update_attributes is_correct: true if
@@ -48,8 +48,13 @@ class Exam < ActiveRecord::Base
 
   private
   def init_exam
-    self.questions = self.subject.questions.active
-      .order("RANDOM()").limit Settings.exam.question_number
+    question_ids = self.subject.questions.active
+      .order("RANDOM()").limit(Settings.exam.question_number).ids
+    results = []
+    question_ids.each do |id|
+      results << Result.new(question_id: id, exam_id: self.id)
+    end
+    Result.import results
   end
 
   def set_score

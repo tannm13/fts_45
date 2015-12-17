@@ -4,10 +4,12 @@ class ExamsController < ApplicationController
   def index
     @exam = Exam.new
     @subjects = Subject.all
-    @exams = current_user.exams.recent.paginate page: params[:page]
+    @exams = current_user.exams.recent.paginate(page: params[:page]).
+      includes :subject
   end
 
   def show
+    @exam = Exam.where(id: params[:id]).includes(results: {question: :answers}).first
     @results = @exam.results
     if @exam.start? || @exam.saved?
       @exam.update_status :testing
